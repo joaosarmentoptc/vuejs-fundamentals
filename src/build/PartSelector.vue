@@ -1,11 +1,11 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div class="part" :class="position">
-    <img :src="selectedPart.src" title="arm" alt="" @click="showPartInfo = !showPartInfo"/>
+    <img :src="selectedPart.src" title="arm" alt="" @click="showPartInfo()"/>
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
-    <teleport to="#partInfo"  v-if="showPartInfo">
+    <teleport to="#partInfo" v-if="false">
         <div>
             <div>{{  selectedPart.cost }} {{  selectedPart.title }} {{  selectedPart.type }}</div>
             <div>{{  selectedPart.description }}</div>
@@ -39,7 +39,7 @@ export default {
     },
   },
   data() {
-    return { selectedPartIndex: 0, showPartInfo: false };
+    return { selectedPartIndex: 0 };
   },
   computed: {
     selectedPart() {
@@ -53,6 +53,15 @@ export default {
     this.emitSelectedPart();
   },
   methods: {
+    showPartInfo() {
+      this.$router.push({
+        name: 'Parts',
+        params: {
+          partType: this.selectedPart.type,
+          id: this.selectedPart.id,
+        },
+      });
+    },
     emitSelectedPart() {
       this.$emit('partSelected', this.selectedPart);
     },
@@ -101,6 +110,7 @@ export default {
 }
 .part img {
   width:165px;
+  cursor: pointer;
 }
 .top {
   border-bottom: none;
