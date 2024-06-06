@@ -5,6 +5,7 @@ import RobotArms from '@/parts/RobotArms.vue';
 import RobotBases from '@/parts/RobotBases.vue';
 import RobotTorsos from '@/parts/RobotTorsos.vue';
 import SidebarBuild from '@/sidebars/SidebarBuild.vue';
+import ShoppingCart from '@/cart/ShoppingCart.vue';
 import HomePage from '../home/HomePage.vue';
 import RobotBuilder from '../build/RobotBuilder.vue';
 import PartInfo from '../parts/PartInfo.vue';
@@ -64,6 +65,11 @@ export default createRouter({
       const isValidId = Number.isInteger(Number(to.params.id));
       next(isValidId);
     },
+  },
+  {
+    path: '/cart',
+    name: 'ShoppingCart',
+    component: ShoppingCart,
   },
   ],
 });
