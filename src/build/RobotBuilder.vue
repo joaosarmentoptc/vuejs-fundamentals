@@ -102,10 +102,12 @@ export default {
   methods: {
     addToCart() {
       const robot = this.selectedRobot;
-      // eslint-disable-next-line max-len
-      const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost;
-      this.$store.commit('addRobotToCart', { ...robot, cost });
-      // this.cart.push({ ...robot, cost });
+      const cost = robot.head.cost
+                    + robot.leftArm.cost
+                    + robot.torso.cost
+                    + robot.rightArm.cost
+                    + robot.base.cost;
+      this.$store.dispatch('addRobotToCart', { ...robot, cost });
       this.addedToCart = true;
     },
   },
