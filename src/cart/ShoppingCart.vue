@@ -60,7 +60,7 @@ export default {
       return this.$store.state.robots.cart;
     },
     cartSaleItems() {
-      return this.$store.getters.itemsOnSale;
+      return this.$store.getters['robots/itemsOnSale'];
     },
   },
 };
