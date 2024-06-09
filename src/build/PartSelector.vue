@@ -4,7 +4,10 @@
     <img :src="selectedPart.src" title="arm" alt="" @click="showPartInfo()"/>
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
-    <span class="sale" v-show="selectedPart.onSale">Sale!</span>
+    <span
+      v-pin="{bottom: '10px', right: '5px' }"
+      class="sale"
+      v-show="selectedPart.onSale">Sale!</span>
     <teleport to="#partInfo" v-if="false">
         <div>
             <div>{{  selectedPart.cost }} {{  selectedPart.title }} {{  selectedPart.type }}</div>
@@ -16,7 +19,6 @@
 </template>
 
 <script>
-
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
   return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
@@ -92,9 +94,6 @@ export default {
   border: 3px solid #aaa;
 }
 .sale {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   color: white;
   background-color: red;
   padding: 3px;
